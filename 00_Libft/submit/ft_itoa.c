@@ -6,13 +6,13 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/17 09:39:57 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:33:36 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	count_digits(long long num)
+static size_t	count_digits(long long num)
 {
 	size_t		count;
 

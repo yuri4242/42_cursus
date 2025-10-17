@@ -6,18 +6,18 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/15 23:07:17 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:32:47 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_deli(char c, char deli)
+static int	is_deli(char c, char deli)
 {
 	return (c == deli || c == '\0');
 }
 
-size_t	count_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
 	size_t	count;
 	int		in_word;
@@ -38,7 +38,7 @@ size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-char	**free_all(char **splits)
+static char	**free_all(char **splits)
 {
 	int	i;
 
@@ -52,7 +52,7 @@ char	**free_all(char **splits)
 	return (NULL);
 }
 
-char	**do_split(char **splits, char const *s, char c, size_t word_count)
+static char	**do_split(char **splits, char const *s, char c, size_t word_count)
 {
 	size_t	i;
 	size_t	word_start;

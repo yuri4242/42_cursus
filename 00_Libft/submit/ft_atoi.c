@@ -6,13 +6,13 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/16 15:34:28 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:27:11 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isspace(char c)
+static int	ft_isspace(char c)
 {
 	return (c == '\f'
 		|| c == '\n'
@@ -22,12 +22,12 @@ int	ft_isspace(char c)
 		|| c == ' ');
 }
 
-int	ft_issign(char c)
+static int	ft_issign(char c)
 {
 	return (c == '+' || c == '-');
 }
 
-int	is_overflow(long long result, int digit, int sign)
+static int	is_overflow(long long result, int digit, int sign)
 {
 	long long	int_max;
 	long long	int_min;
@@ -51,7 +51,7 @@ int	is_overflow(long long result, int digit, int sign)
 	return (0);
 }
 
-int	parse_digits(const char *nptr, int sign)
+static int	parse_digits(const char *nptr, int sign)
 {
 	long long	result;
 	int			overflow;

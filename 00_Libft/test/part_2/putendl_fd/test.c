@@ -64,6 +64,13 @@ int main(void)
         printf("❌ NG: Strings do not match.\n");
     
     free(buffer);
+
+	// 5. NULLポインタを渡した場合
+    printf("\n\n========= Test Cases for NULL pointer =========\n\n");
+	fd = open(filename, O_WRONLY);
+	ft_putendl_fd(NULL, fd);
+	printf("何も処理されず、関数が終了する。\n\n");
+
         
     return (0);
 }

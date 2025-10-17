@@ -6,13 +6,13 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/15 23:07:17 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/17 15:31:53 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_set(char c, char const*set)
+static int	is_set(char c, char const*set)
 {
 	int	i;
 

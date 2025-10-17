@@ -6,7 +6,7 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/15 23:07:17 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/17 11:48:40 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ void	ft_putnbr_fd(int n, int fd)
 {
 	long long	nbr;
 
-	nbr = n;
-	if (n < 0)
+	nbr = (long long)n;
+	if (nbr < 0)
 	{
 		ft_putchar_fd('-', fd);
 		nbr = -nbr;

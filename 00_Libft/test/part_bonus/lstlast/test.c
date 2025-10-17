@@ -58,6 +58,14 @@ int main(void)
     else
         printf("❌ NG: Did not return the correct pointer.\n\n");
 
+    // --- テストケース4: 無効なリスト ---
+    printf("--- Test Case 4: Unvalid list ---\n");
+    last = ft_lstlast(NULL);
+    if (last == NULL)
+        printf("✅ OK: Returned NULL for an empty list.\n\n");
+    else
+        printf("❌ NG: Should return NULL for an empty list.\n\n");
+
     // 最後に確保した全メモリを解放
     free_list(head);
 

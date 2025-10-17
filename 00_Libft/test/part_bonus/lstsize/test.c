@@ -11,8 +11,6 @@ void    free_list(t_list *head)
     {
         tmp = head;
         head = head->next;
-        // このテストではcontentに文字列リテラルを使っているので、
-        // content自体のfreeは不要
         free(tmp);
     }
 }
@@ -41,6 +39,11 @@ int main(void)
     ft_lstadd_front(&head, ft_lstnew("third"));
     size = ft_lstsize(head);
     printf("Expected: 3, Got: %d -> %s\n\n", size, size == 3 ? "✅ OK" : "❌ NG");
+
+    // --- テストケース4: 無効のリスト ---
+    printf("--- Test Case 4: Unvails list ---\n");
+    size = ft_lstsize(NULL);
+    printf("Expected: 0, Got: %d -> %s\n\n", size, size == 0 ? "✅ OK" : "❌ NG");
 
     // 最後に確保した全メモリを解放
     free_list(head);

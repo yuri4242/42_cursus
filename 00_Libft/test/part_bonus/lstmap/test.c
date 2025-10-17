@@ -76,6 +76,16 @@ int main(void)
     else
         printf("NOT NULL\n❌ NG\n\n");
 
+    // --- テストケース3: 無効な関数を渡す ---
+    printf("--- Test Case 3: Map on an Invalid function ---\n");
+    t_list *result_from_invalid = ft_lstmap(head_orig, NULL, &del_content);
+    printf("Result from Invaild function is: ");
+    if (result_from_invalid == NULL)
+        printf("NULL\n✅ OK\n\n");
+    else
+        printf("NOT NULL\n❌ NG\n\n");
+
+
     // 最後に確保した全メモリを解放
     ft_lstclear(&head_orig, &del_content);
     ft_lstclear(&head_new, &del_content);
