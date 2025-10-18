@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:17:22 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/17 16:41:49 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/17 23:33:18 by yu-ri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,13 @@ char	*get_next_line(int fd)
 		return (NULL);
 	}
 	line = extract_line(leftover);
-	tmp = update_leftover(leftover);
-	leftover = tmp;
 	if (line == NULL)
 	{
 		free(leftover);
 		leftover = NULL;
 		return (NULL);
 	}
+	tmp = update_leftover(leftover);
+	leftover = tmp;
 	return (line);
 }

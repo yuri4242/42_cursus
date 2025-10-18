@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/18 23:47:20 by yu-ri            ###   ########.fr       */
+/*   Updated: 2025/10/17 12:42:25 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
+int	ft_lstsize(t_list *lst)
 {
-	size_t	copy_len;
-	size_t	src_len;
+	t_list	*current;
+	int		count;
 
-	src_len = ft_strlen(src);
-	if (dsize == 0)
-		return (src_len);
-	copy_len = 0;
-	if (src_len + 1 < dsize)
-		copy_len = src_len;
-	else if (dsize != 0)
-		copy_len = dsize - 1;
-	ft_memcpy(dst, src, copy_len);
-	dst[copy_len] = '\0';
-	return (src_len);
+	if (lst == NULL)
+		return (0);
+	current = lst;
+	count = 0;
+	while (current != NULL)
+	{
+		count++;
+		current = current->next;
+	}
+	return (count);
 }

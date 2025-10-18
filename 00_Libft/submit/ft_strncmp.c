@@ -6,7 +6,7 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/16 15:14:16 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/18 23:49:01 by yu-ri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	size_t	i;
 
-	if (s1 == NULL || s2 == NULL)
-	{
-		if (s1 == s2)
-			return (0);
-		if (s1 == NULL && s2 != NULL)
-			return (0 - (unsigned char)s2[0]);
-		if (s1 != NULL && s2 == NULL)
-			return ((unsigned char)s1[0] - 0);
-	}
 	if (n == 0)
 		return (0);
 	i = 0;

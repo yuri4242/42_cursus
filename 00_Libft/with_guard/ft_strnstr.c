@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/18 23:47:20 by yu-ri            ###   ########.fr       */
+/*   Updated: 2025/10/16 14:28:25 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	size_t	copy_len;
-	size_t	src_len;
+	size_t	i;
+	size_t	len_lit;
 
-	src_len = ft_strlen(src);
-	if (dsize == 0)
-		return (src_len);
-	copy_len = 0;
-	if (src_len + 1 < dsize)
-		copy_len = src_len;
-	else if (dsize != 0)
-		copy_len = dsize - 1;
-	ft_memcpy(dst, src, copy_len);
-	dst[copy_len] = '\0';
-	return (src_len);
+	if (big == NULL || little == NULL)
+		return (NULL);
+	if (little[0] == '\0')
+		return ((char *)big);
+	i = 0;
+	len_lit = ft_strlen(little);
+	while (i < len && big[i] != '\0' && i <= len - len_lit)
+	{
+		if (ft_memcmp(big + i, little, len_lit) == 0)
+			return ((char *)big + i);
+		i++;
+	}
+	return (NULL);
 }

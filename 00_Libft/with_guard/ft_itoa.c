@@ -1,31 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/18 23:47:20 by yu-ri            ###   ########.fr       */
+/*   Updated: 2025/10/17 15:33:36 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
+static size_t	count_digits(long long num)
 {
-	size_t	copy_len;
-	size_t	src_len;
+	size_t		count;
 
-	src_len = ft_strlen(src);
-	if (dsize == 0)
-		return (src_len);
-	copy_len = 0;
-	if (src_len + 1 < dsize)
-		copy_len = src_len;
-	else if (dsize != 0)
-		copy_len = dsize - 1;
-	ft_memcpy(dst, src, copy_len);
-	dst[copy_len] = '\0';
-	return (src_len);
+	count = 0;
+	if (num <= 0)
+	{
+		num *= -1;
+		count++;
+	}
+	while (num > 0)
+	{
+		num /= 10;
+		count++;
+	}
+	return (count);
+}
+
+char	*ft_itoa(int n)
+{
+	char		*itoa;
+	size_t		len;
+	long long	num;
+
+	num = (long long)n;
+	len = count_digits(num);
+	itoa = malloc(sizeof(char) * (len + 1));
+	if (itoa == NULL)
+		return (NULL);
+	itoa[len] = '\0';
+	if (num == 0)
+		itoa[0] = '0';
+	if (num < 0)
+	{
+		itoa[0] = '-';
+		num *= -1;
+	}
+	while (num > 0)
+	{
+		len--;
+		itoa[len] = (num % 10) + '0';
+		num /= 10;
+	}
+	return (itoa);
 }

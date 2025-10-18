@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/18 23:47:20 by yu-ri            ###   ########.fr       */
+/*   Updated: 2025/10/16 17:28:18 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	size_t	copy_len;
-	size_t	src_len;
+	unsigned char		*d;
+	const unsigned char	*s;
+	size_t				i;
 
-	src_len = ft_strlen(src);
-	if (dsize == 0)
-		return (src_len);
-	copy_len = 0;
-	if (src_len + 1 < dsize)
-		copy_len = src_len;
-	else if (dsize != 0)
-		copy_len = dsize - 1;
-	ft_memcpy(dst, src, copy_len);
-	dst[copy_len] = '\0';
-	return (src_len);
+	if (src == NULL || dest == NULL)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	i = 0;
+	while (i < n)
+	{
+		d[i] = s[i];
+		i++;
+	}
+	return (dest);
 }

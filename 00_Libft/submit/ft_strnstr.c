@@ -6,7 +6,7 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/16 14:28:25 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/18 23:48:28 by yu-ri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	i;
 	size_t	len_lit;
 
-	if (big == NULL || little == NULL)
-		return (NULL);
 	if (little[0] == '\0')
 		return ((char *)big);
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/16 12:19:29 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/18 23:47:42 by yu-ri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,6 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	len_dst;
 	size_t	len_src;
 
-	if (src == NULL)
-	{
-		if (dst == NULL)
-			return (0);
-		return (ft_strlen(dst));
-	}
-	if (dst == NULL)
-		return (ft_strlen(src));
 	len_src = ft_strlen(src);
 	len_dst = 0;
 	while (len_dst < size && dst[len_dst] != '\0')

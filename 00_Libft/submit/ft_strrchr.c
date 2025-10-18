@@ -6,7 +6,7 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/15 23:07:17 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/18 23:48:14 by yu-ri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ char	*ft_strrchr(const char *s, int c)
 {
 	const char	*end;
 
-	if (s == NULL)
-		return (NULL);
 	end = s + ft_strlen(s);
 	while (end >= s)
 	{

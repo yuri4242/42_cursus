@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/18 23:47:20 by yu-ri            ###   ########.fr       */
+/*   Updated: 2025/10/15 23:07:17 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dsize)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*sub;
 	size_t	copy_len;
-	size_t	src_len;
+	size_t	s_len;
 
-	src_len = ft_strlen(src);
-	if (dsize == 0)
-		return (src_len);
-	copy_len = 0;
-	if (src_len + 1 < dsize)
-		copy_len = src_len;
-	else if (dsize != 0)
-		copy_len = dsize - 1;
-	ft_memcpy(dst, src, copy_len);
-	dst[copy_len] = '\0';
-	return (src_len);
+	if (s == NULL)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (s_len <= start)
+		return (ft_strdup(""));
+	if (s_len - start > len)
+		copy_len = len;
+	else
+		copy_len = s_len - start;
+	sub = malloc(sizeof(char) * (copy_len + 1));
+	if (sub == NULL)
+		return (NULL);
+	ft_memcpy(sub, s + start, copy_len);
+	sub[copy_len] = '\0';
+	return (sub);
 }

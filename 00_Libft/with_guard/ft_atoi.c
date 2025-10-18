@@ -6,7 +6,7 @@
 /*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/18 23:49:27 by yu-ri            ###   ########.fr       */
+/*   Updated: 2025/10/17 15:27:11 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,8 @@ int	ft_atoi(const char *nptr)
 	unsigned int	i;
 	int				sign;
 
+	if (nptr == NULL)
+		return (0);
 	i = 0;
 	sign = 1;
 	while (ft_isspace(nptr[i]))
