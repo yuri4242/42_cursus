@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
+/*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/17 15:31:53 by yikebata         ###   ########.fr       */
+/*   Created: 2025/10/19 13:06:31 by yikebata          #+#    #+#             */
+/*   Updated: 2025/10/19 13:06:34 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

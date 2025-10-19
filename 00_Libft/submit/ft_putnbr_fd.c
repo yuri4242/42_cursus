@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yikebata  <yikebata@student.42tokyo.>      +#+  +:+       +#+        */
+/*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/16 08:59:35 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/17 11:48:40 by yikebata         ###   ########.fr       */
+/*   Created: 2025/10/19 13:07:55 by yikebata          #+#    #+#             */
+/*   Updated: 2025/10/19 13:07:56 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
