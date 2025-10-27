@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_signed_nbr.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/27 09:49:15 by yikebata          #+#    #+#             */
+/*   Updated: 2025/10/27 10:29:34 by yikebata         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	print_integer(long long n, t_flags flags, int len)
@@ -20,7 +32,10 @@ int	print_integer(long long n, t_flags flags, int len)
 	if (!flags.minus && flags.zero)
 		count += ptf_print_padding(padding_len, '0');
 	count += ptf_print_padding(zero_len, '0');
-	count += ptf_putnbr_absolute(n);
+	if (n < 0)
+		count += ptf_putnbr_absolute(-n);
+	else
+		count += ptf_putnbr_absolute(n);
 	if (flags.minus)
 		count += ptf_print_padding(padding_len, ' ');
 	return (count);

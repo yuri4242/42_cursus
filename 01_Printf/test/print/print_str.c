@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_str.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/27 09:49:25 by yikebata          #+#    #+#             */
+/*   Updated: 2025/10/27 10:17:58 by yikebata         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	print_str(va_list ap, t_flags flags)
@@ -10,7 +22,7 @@ int	print_str(va_list ap, t_flags flags)
 
 	str = (char *)va_arg(ap, char *);
 	if (str == NULL)
-		str = "(nil)";
+		str = "(null)";
 	full_len = ft_strlen(str);
 	count = 0;
 	print_len = full_len;

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse_specifier.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/27 09:50:05 by yikebata          #+#    #+#             */
+/*   Updated: 2025/10/27 15:31:29 by yikebata         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	parse_specifier(va_list ap, char specifier, t_flags flags)
@@ -18,5 +30,7 @@ int	parse_specifier(va_list ap, char specifier, t_flags flags)
 		return (print_hex_upper(ap, flags));
 	else if (specifier == '%')
 		return (ptf_putchar('%'));
+	else
+		return (ptf_putchar('%') + ptf_putchar(specifier));
 	return (0);
 }

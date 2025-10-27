@@ -1,12 +1,10 @@
 #include <stdio.h>
 #include <limits.h>
-#include "ft_printf.h" // ご自身のft_printf.hをインクルードしてください
+#include "ft_printf.h" 
 
-// テスト結果を比較し、分かりやすく表示するためのカウンター
 static int test_count = 0;
 static int passed_count = 0;
 
-// 比較結果を出力するヘルパー関数
 void print_result(int ft_ret, int og_ret)
 {
     test_count++;
@@ -26,7 +24,6 @@ void print_result(int ft_ret, int og_ret)
 
 int main(void)
 {
-    // テスト用の変数を宣言
     int ft_ret;
     int og_ret;
     char *s_null = NULL;
@@ -298,6 +295,11 @@ int main(void)
     og_ret = printf("   printf: [%-5%]\n");
     print_result(ft_ret, og_ret);
     
+    printf("[PCT-04] Testing: \"[%%%%%%]\"\n");
+    ft_ret = ft_printf("ft_printf: [%%%%%%%%%]\n");
+    og_ret = printf("   printf: [%%%%%%%%%]\n");
+    print_result(ft_ret, og_ret);
+
     // ==================================================
     // 8. 複数指定テスト
     // ==================================================

@@ -1,15 +1,13 @@
-#include <stdio.h>    // printf, putchar のために必要
-#include <stdarg.h>   // 可変長引数マクロのために必要
+#include <stdio.h>
+#include <stdarg.h>
 
-/* minprintf: 可変長引数リストを持つ最小限のprintf */
 void minprintf(char *fmt, ...)
 {
-    va_list ap;     /* 可変長引数を順に指すポインタ */
+    va_list ap;
     char *p, *sval;
     int ival;
     double dval;
 
-    // apを最初の名前なし引数を指すように設定する
     va_start(ap, fmt);
 
     for (p = fmt; *p; p++) {
@@ -18,7 +16,6 @@ void minprintf(char *fmt, ...)
             continue;
         }
 
-        // '%'の次の文字を評価する
         switch (*++p) {
         case 'd':
             ival = va_arg(ap, int);
@@ -29,23 +26,18 @@ void minprintf(char *fmt, ...)
             printf("%f", dval);
             break;
         case 's':
-            // 文字列ポインタを取得し、1文字ずつ出力する
             for (sval = va_arg(ap, char *); *sval; sval++) {
                 putchar(*sval);
             }
             break;
         default:
-            // 対応していない変換文字は、そのまま出力する
             putchar(*p);
             break;
         }
     }
-
-    // 終了時にクリーンアップ
     va_end(ap);
 }
 
-// 動作確認のためのmain関数
 int main(void)
 {
     minprintf("Hello, this is a minimal printf implementation.\n");

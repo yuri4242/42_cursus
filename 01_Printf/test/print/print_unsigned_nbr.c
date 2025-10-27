@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_unsigned_nbr.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/27 09:49:33 by yikebata          #+#    #+#             */
+/*   Updated: 2025/10/27 09:49:36 by yikebata         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	print_unsigned_integer(unsigned int n, t_flags flags, int len)

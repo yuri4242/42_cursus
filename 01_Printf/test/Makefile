@@ -3,7 +3,7 @@ PRINT_DIR	:= ./print
 HEADER_DIR	:= ./header
 PARSE_DIR	:= ./parse
 UTIL_DIR	:= ./util
-LIBFT_PATH	:= ../Libft
+LIBFT_PATH	:= ./Libft
 
 LIBFT_A	:= $(LIBFT_PATH)/libft.a
 
@@ -24,7 +24,7 @@ HEADERS	:= $(HEADER_DIR)/ft_printf.h \
 		   $(HEADER_DIR)/util.h 
 
 SRC_TEST := \
-			test.c  \
+			ft_printf.c  \
 			main.c
 
 SRC_PRINT	:= \
@@ -52,8 +52,6 @@ SRC_UTIL	:= \
 			   ptf_putnbr_unsigned.c \
 			   ptf_putnbr_absolute.c \
 			   ptf_putnbr_base.c \
-			   is_flag.c \
-			   is_specifier.c \
 			   is_flag_specifier.c \
 			   init_flags.c \
 			   ptf_print_padding.c \
