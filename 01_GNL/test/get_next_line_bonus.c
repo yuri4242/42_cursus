@@ -1,44 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:17:22 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/24 15:45:11 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/24 13:39:43 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-static char	*update_leftover(char *leftover)
-{
-	char	*new;
-	char	*head_ptr;
-	size_t	len_new;
-
-	if (leftover == NULL)
-		return (NULL);
-	head_ptr = gnl_strchr(leftover, '\n');
-	if (head_ptr == NULL)
-	{
-		free(leftover);
-		return (NULL);
-	}
-	len_new = gnl_strlen(head_ptr + 1);
-	new = malloc(sizeof(char) * (len_new + 1));
-	if (new == NULL)
-	{
-		free(leftover);
-		return (NULL);
-	}
-	gnl_strlcpy(new, head_ptr + 1, len_new + 1);
-	free(leftover);
-	return (new);
-}
-
-static char	*extract_line(char const *leftover)
+char	*extract_line(char const *leftover)
 {
 	char	*line;
 	size_t	len;
@@ -62,17 +36,6 @@ static char	*extract_line(char const *leftover)
 	}
 	line[i] = '\0';
 	return (line);
-}
-
-static int	free_all(char **leftover, char **buf)
-{
-	if (leftover != NULL)
-	{
-		free(*leftover);
-		*leftover = NULL;
-	}
-	free(*buf);
-	return (-1);
 }
 
 static int	read_one_line(int fd, char **leftover)
@@ -102,30 +65,79 @@ static int	read_one_line(int fd, char **leftover)
 	return (1);
 }
 
+static t_fds	*create_node(t_fds **head, int fd)
+{
+	t_fds	*current;
+
+	if (head == NULL)
+		return (NULL);
+	current = *head;
+	while (current != NULL)
+	{
+		if (current->fd == fd)
+			return (current);
+		current = current->next;
+	}
+	current = malloc(sizeof(t_fds));
+	if (current == NULL)
+		return (NULL);
+	current->fd = fd;
+	current->leftover = NULL;
+	current->next = NULL;
+	*head = current;
+	return (current);
+}
+
+static void	remove_node(t_fds **head, int fd)
+{
+	t_fds	*current;
+	t_fds	*prev;
+
+	if (head == NULL || *head == NULL)
+		return ;
+	current = *head;
+	prev = NULL;
+	while (current != NULL)
+	{
+		if (current->fd == fd)
+		{
+			if (prev == NULL)
+				*head = current->next;
+			else
+				prev->next = current->next;
+			free(current->leftover);
+			free(current);
+			return ;
+		}
+		prev = current;
+		current = current->next;
+	}
+}
+
 char	*get_next_line(int fd)
 {
-	static char	*leftover = NULL;
-	char		*line;
-	char		*new_lo;
-	int			status;
+	static t_fds	*head = NULL;
+	t_fds			*current;
+	char			*line;
+	char			*new_lo;
+	int				status;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	status = read_one_line(fd, &leftover);
-	if (status <= 0 && (leftover == NULL || *leftover == '\0'))
+	current = create_node(&head, fd);
+	if (current == NULL)
+		return (NULL);
+	status = read_one_line(fd, &current->leftover);
+	if (status <= 0 && (current->leftover == NULL
+			|| *(current->lefover) == '\0'))
 	{
-		free(leftover);
-		leftover = NULL;
+		remove_node(&head, fd);
 		return (NULL);
 	}
-	line = extract_line(leftover);
+	line = extract_line(current->leftover);
 	if (line == NULL)
-	{
-		free(leftover);
-		leftover = NULL;
-		return (NULL);
-	}
-	new_lo = update_leftover(leftover);
-	leftover = new_lo;
+		return (remove_node(&head, fd), NULL);
+	new_lo = update_leftover(current->leftover);
+	current->leftover = new_lo;
 	return (line);
 }

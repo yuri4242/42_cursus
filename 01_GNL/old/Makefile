@@ -1,9 +1,9 @@
 CC	:= gcc
-CFLAGS	:= -Wall -Wextra -Werror -D BUFFER_SIZE=32
+CFLAGS	:= -Wall -Wextra -Werror -g fsanitize=address
 
 NAME	:= main
 
-SRC	:= test.c get_next_line.c get_next_line_utils.c
+SRC	:= test2.c ../test/get_next_line.c ../test/get_next_line_utils.c
 OBJ	:= $(SRC:.c=.o)
 
 all: $(NAME)

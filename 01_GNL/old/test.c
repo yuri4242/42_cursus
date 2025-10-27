@@ -2,6 +2,7 @@
 #include <fcntl.h>
 #include "get_next_line.h"
 
+// テストファイルを自動生成するヘルパー関数
 void create_test_file(const char *filename, const char *content)
 {
 	int fd = open(filename, O_WRONLY | O_CREAT | O_TRUNC, 0644);
@@ -12,6 +13,7 @@ void create_test_file(const char *filename, const char *content)
 	}
 }
 
+// テスト結果を表示するヘッダー
 void print_header(const char *test_name)
 {
 	printf("\n--- %s (BUFFER_SIZE: %d) ---\n", test_name, BUFFER_SIZE);
@@ -23,6 +25,7 @@ int main(void)
 	char	*line;
 	int		line_num;
 
+	// --- テスト用のファイルを作成 ---
 	create_test_file("test_standard.txt", "line1\nline2\nline3\n");
 	create_test_file("test_no_newline.txt", "abcdef");
 	create_test_file("test_empty.txt", "");
@@ -105,6 +108,8 @@ int main(void)
 	free(line);
 
 	// === ケース8: 正常系 (標準入力) ===
+	// このテストを実行すると、プログラムはキーボードからの入力を待ちます。
+	// Ctrl+D を押すとEOFが送られ、ループが終了します。
 	print_header("Standard Input Test");
 	printf("Please type something and press Enter. (Ctrl+D to exit)\n");
 	line_num = 1;

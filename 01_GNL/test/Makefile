@@ -1,5 +1,5 @@
 CC	:= gcc
-CFLAGS	:= -Wall -Wextra -Werror -D BUFFER_SIZE=32
+CFLAGS	:= -Wall -Wextra -Werror -D BUFFER_SIZE=42
 
 NAME	:= main
 

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:17:51 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/23 17:52:06 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/24 13:40:08 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	gnl_strlen(const char *s)
 {
@@ -26,8 +26,8 @@ size_t	gnl_strlen(const char *s)
 
 char	*gnl_strchr(const char *s, int c)
 {
-	int	i;
-	int	s_len;
+	size_t	i;
+	size_t	s_len;
 
 	if (s == NULL)
 		return (NULL);
@@ -42,48 +42,13 @@ char	*gnl_strchr(const char *s, int c)
 	return (NULL);
 }
 
-void	*gnl_memcpy(void *dest, const void *src, size_t n)
-{
-	unsigned char		*d;
-	const unsigned char	*s;
-	size_t				i;
-
-	if (dest == NULL && src == NULL)
-		return (NULL);
-	d = (unsigned char *)dest;
-	s = (const unsigned char *)src;
-	i = 0;
-	while (i < n)
-	{
-		d[i] = s[i];
-		i++;
-	}
-	return (dest);
-}
-
-size_t	gnl_strlcpy(char *dst, const char *src, size_t dsize)
-{
-	size_t	copy_len;
-	size_t	src_len;
-
-	src_len = gnl_strlen(src);
-	if (dsize == 0)
-		return (src_len);
-	copy_len = 0;
-	if (src_len + 1 < dsize)
-		copy_len = src_len;
-	else if (dsize != 0)
-		copy_len = dsize - 1;
-	gnl_memcpy(dst, src, copy_len);
-	dst[copy_len] = '\0';
-	return (src_len);
-}
-
 char	*gnl_strjoin(char *s1, char *s2)
 {
 	char	*join;
 	size_t	len_s1;
 	size_t	len_s2;
+	size_t	i;
+	size_t	j;
 
 	if (s1 == NULL)
 	{
@@ -93,17 +58,56 @@ char	*gnl_strjoin(char *s1, char *s2)
 		s1[0] = '\0';
 	}
 	if (s2 == NULL)
-		return (NULL);
+		return (free(s1), NULL);
 	len_s1 = gnl_strlen(s1);
 	len_s2 = gnl_strlen(s2);
 	join = malloc(sizeof(char) * (len_s1 + len_s2 + 1));
 	if (join == NULL)
+		return (free(s1), NULL);
+	i = 0;
+	j = 0;
+	while (i < len_s1)
+		join[i++] = s1[j++];
+	j = 0;
+	while (j < len_s2 + 1)
+		join[i++] = s2[j++];
+	return (free(s1), join);
+}
+
+int	free_all(char **leftover, char **buf)
+{
+	if (leftover != NULL)
 	{
-		free(s1);
-		return (NULL);
+		free(*leftover);
+		*leftover = NULL;
 	}
-	gnl_memcpy(join, s1, len_s1);
-	gnl_memcpy(join + len_s1, s2, len_s2 + 1);
-	free(s1);
-	return (join);
+	free(*buf);
+	return (-1);
+}
+
+
+char	*update_leftover(char *leftover)
+{
+	char	*new;
+	char	*head_ptr;
+	size_t	len_new;
+
+	if (leftover == NULL)
+		return (NULL);
+	head_ptr = gnl_strchr(leftover, '\n');
+	if (head_ptr == NULL)
+		return (free(leftover, NULL));
+	len_new = gnl_strlen(head_ptr + 1);
+	new = malloc(sizeof(char) * (len_new + 1));
+	if (new == NULL)
+		return (free(leftover), NULL);
+	i = 0;
+	while (i < len_new)
+	{
+		new[i] = (head_ptr + 1)[i];
+		i++;
+	}
+	new[len_new] = '\0';
+	free(leftover);
+	return (new);
 }

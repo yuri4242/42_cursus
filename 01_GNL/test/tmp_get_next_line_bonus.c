@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/17 16:17:22 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/24 15:45:11 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/10/24 12:25:48 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
-static char	*update_leftover(char *leftover)
+char	*update_leftover(char *leftover)
 {
 	char	*new;
 	char	*head_ptr;
@@ -38,7 +38,7 @@ static char	*update_leftover(char *leftover)
 	return (new);
 }
 
-static char	*extract_line(char const *leftover)
+char	*extract_line(char const *leftover)
 {
 	char	*line;
 	size_t	len;
@@ -64,7 +64,7 @@ static char	*extract_line(char const *leftover)
 	return (line);
 }
 
-static int	free_all(char **leftover, char **buf)
+int	free_all(char **leftover, char **buf)
 {
 	if (leftover != NULL)
 	{
@@ -104,28 +104,28 @@ static int	read_one_line(int fd, char **leftover)
 
 char	*get_next_line(int fd)
 {
-	static char	*leftover = NULL;
+	static char	*leftover[OPEN_MAX] = NULL;
 	char		*line;
 	char		*new_lo;
 	int			status;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0)
 		return (NULL);
-	status = read_one_line(fd, &leftover);
-	if (status <= 0 && (leftover == NULL || *leftover == '\0'))
+	status = read_one_line(fd, &leftover[fd]);
+	if (status <= 0 && (leftover[fd] == NULL || *leftover[fd] == '\0'))
 	{
-		free(leftover);
-		leftover = NULL;
+		free(leftover[fd]);
+		leftover[fd] = NULL;
 		return (NULL);
 	}
-	line = extract_line(leftover);
+	line = extract_line(leftover[fd]);
 	if (line == NULL)
 	{
-		free(leftover);
-		leftover = NULL;
+		free(leftover[fd]);
+		leftover[fd] = NULL;
 		return (NULL);
 	}
-	new_lo = update_leftover(leftover);
-	leftover = new_lo;
+	new_lo = update_leftover(leftover[fd]);
+	leftover[fd] = new_lo;
 	return (line);
 }
