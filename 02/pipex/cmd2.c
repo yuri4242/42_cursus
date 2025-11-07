@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:37:40 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/06 17:38:39 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:17:55 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ void	execve_cmd2(char *file, char *cmd, char **envp, t_pipex *vars)
 	cmd_fullpath = create_cmd_path(cmds[0], envp);
 	if (cmd_fullpath == NULL)
 	{
-		ft_printf(stderr, "command not found: %s\n", cmds[0]);
-		cmd1_cleanup(&cmds, &cmd_fullpath);
+		print_error(cmds[0]);
+		cmd_cleanup(&cmds, &cmd_fullpath);
 		exit(127);//ここマジックナンバーでいいのか？
 	}
 	vars->out_fd = open(file, O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (vars->out_fd == -1)
 	{
 		perror(file);
-		cmd1_cleanup(&cmds, &cmd_fullpath);
+		cmd_cleanup(&cmds, &cmd_fullpath);
 		exit(EXIT_FAILURE);
 	}
 	do_cmd2(vars, cmd_fullpath, cmds, envp);

@@ -5,7 +5,7 @@ import (
 	"image/png"
 	"os"
 	"path/filepath"
-	"string"
+	"strings"
 )
 
 //ToPng func converts jpgFile to pngFile
@@ -22,7 +22,7 @@ func ToPng(jpgPath string) error {
 	}
 
 	ext := filepath.Ext(jpgPath)
-	pngPath := strintg.TrimSuffix(jpgPath, ext) + ".png"
+	pngPath := strings.TrimSuffix(jpgPath, ext) + ".png"
 
 	pngFile, err := os.Create(pngPath)
 	if err != nil {

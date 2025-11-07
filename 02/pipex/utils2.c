@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:41:44 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/06 17:44:36 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:33:56 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,11 @@ char	*create_cmd_path(char *cmd, char **envp)
 	}
 	free_all(paths);
 	return (NULL);
+}
+
+void	print_error(char *err)
+{
+	write(STDERR_FILENO, "command not found: ", 19);
+	write(STDERR_FILENO, err, ft_strlen(err));
+	write(STDERR_FILENO, "\n", 1);
 }

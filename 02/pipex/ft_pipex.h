@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:49:25 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/06 17:59:48 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:18:37 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,15 @@
 # include <stdio.h>
 # include <string.h>
 # include "libft.h"
+
+typedef struct s_pipex
+{
+	int		pipe_fds[2];
+	int		in_fd;
+	int		out_fd;
+	pid_t	pid1;
+	pid_t	pid2;
+}	t_pipex;
 
 //ft_pipex.c
 int		main(int ac, char **av, char **envp);
@@ -46,5 +55,6 @@ void	free_all(char **arr);
 char	*extract_path_fm_envp_lst(char **envp);
 int		check_cmd_path(char *path, char *cmd, char **cmd_fullpath);
 char	*create_cmd_path(char *cmd, char **envp);
+void	print_error(char *err);
 
 #endif

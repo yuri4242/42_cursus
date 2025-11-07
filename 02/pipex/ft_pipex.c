@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:48:57 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/06 17:36:23 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/07 17:40:46 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ pid_t	fork_cmd(char **av, char **envp, t_pipex *vars, int cmd)
 		if (cmd == 1)
 			execve_cmd1(av[1], av[2], envp, vars);
 		else if (cmd == 2)
-			execve_cmd2(av[3], av[4], envp, vars);
+			execve_cmd2(av[4], av[3], envp, vars);
 	}
 	return (pid);
 }
@@ -42,11 +42,11 @@ int	do_pipex(char **av, char **envp)
 		perror("pipe");
 		return (EXIT_FAILURE);
 	}
-	vars->pid1 = fork_cmd(av, envp, &vars, 1);
-	if (vars->pid1 == -1)
+	vars.pid1 = fork_cmd(av, envp, &vars, 1);
+	if (vars.pid1 == -1)
 		return (EXIT_FAILURE);
-	vars->pid2 = fork_cmd(av, envp, &vars, 2);
-	if (vars->pid2 == -1)
+	vars.pid2 = fork_cmd(av, envp, &vars, 2);
+	if (vars.pid2 == -1)
 		return (EXIT_FAILURE);
 	return (pipe_fd_cleanup(vars));
 }

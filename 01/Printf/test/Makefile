@@ -7,25 +7,23 @@ LIBFT_PATH	:= ./Libft
 
 LIBFT_A	:= $(LIBFT_PATH)/libft.a
 
-CC	:= gcc
-#CFLAGS	:= -Wall -Wextra -Werror
+CC	:= cc
+CFLAGS	:= -Wall -Wextra -Werror
 
 CPPFLAGS	:= -I$(LIBFT_PATH) -I$(HEADER_DIR)
-LDFLAGS	:= -L$(LIBFT_PATH) -lft
 
 AR	:= ar
 ARFLAGS	:= rs
 
-NAME	:= test
+NAME	:= libftprintf.a
 
 HEADERS	:= $(HEADER_DIR)/ft_printf.h \
 		   $(HEADER_DIR)/print.h \
-		   $(PARSE_DIR)/parse.h \
+		   $(HEADER_DIR)/parse.h \
 		   $(HEADER_DIR)/util.h 
 
 SRC_TEST := \
-			ft_printf.c  \
-			main.c
+			ft_printf.c  
 
 SRC_PRINT	:= \
 			   print_char.c \
@@ -56,7 +54,8 @@ SRC_UTIL	:= \
 			   init_flags.c \
 			   ptf_print_padding.c \
 			   get_hex_len.c \
-			   get_decimal_len.c
+			   get_decimal_len.c \
+			   write_check.c
 
 SRCS	:= $(addprefix $(SRCS_DIR)/, $(SRC_TEST)) \
 		   $(addprefix $(PRINT_DIR)/, $(SRC_PRINT)) \
@@ -66,16 +65,18 @@ OBJ	:= $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT_A)
-	$(CC) $(OBJ) $(LDFLAGS) -o $(NAME)
-#	$(CC) $(CFLAGS) $(OBJ) $(LDFLAGS) -o $(NAME)
+bonus: all
+
+$(NAME): $(LIBFT_A) $(OBJ)
+	cp $(LIBFT_A) $(NAME)
+	$(AR) $(ARFLAGS) $@ $(OBJ)
+
 
 $(LIBFT_A):
 	make -C $(LIBFT_PATH)
 
 %.o: %.c $(HEADERS)
-	$(CC) $(CPPFLAGS) -c $< -o $@
-#	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
