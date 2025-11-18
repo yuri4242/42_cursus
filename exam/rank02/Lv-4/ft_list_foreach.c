@@ -1,41 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fprime.c                                           :+:      :+:    :+:   */
+/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/28 09:03:41 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/28 09:16:41 by yikebata         ###   ########.fr       */
+/*   Created: 2025/10/29 09:57:26 by yikebata          #+#    #+#             */
+/*   Updated: 2025/11/18 11:44:03 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include <stdlib.h>
+#include "ft_list.h"
 
-int	main(int ac, char **av)
+void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
 {
-	int i;
-	int	num;
+	t_list *cur;
 
-	if (ac != 2)
-		return (1);
-	i = 2;
-	num = atoi(av[1]);
-	if (num == 1)
-		printf("1");
-	while (i <= num)
+	cur = begin_list;
+	while (cur != NULL)
 	{
-		if (num % i == 0)
-		{
-			printf("%d", i);
-			if (i != num)
-				printf("*");
-			num /= i;
-		}
-		else
-			i++;
+		(*f)(cur->data);
+		cur = cur->next;
 	}
-	printf("\n");
-	return (0);
 }

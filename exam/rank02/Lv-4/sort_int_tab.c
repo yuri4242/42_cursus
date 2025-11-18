@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
+/*   sort_int_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/29 09:57:26 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/29 10:03:56 by yikebata         ###   ########.fr       */
+/*   Created: 2025/11/18 08:35:50 by yikebata          #+#    #+#             */
+/*   Updated: 2025/11/18 08:43:41 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-
-void	ft_list_foreach(t_list *begin_list, void (*f)(void *))
+void	sort_int_tab(int *tab, unsigned int size)
 {
-	t_list	*current;
+	int	tmp;
+	unsigned int	i;
 
-	current = begin_list;
-	while (current != NULL)
+	i = 0;
+	while (i < size)
 	{
-		if (current->data != NULL) //ここのNULLガードはなくても良さそう
-			(*f)(current->data);
-		current = current->next;
+		j = i;
+		while (j < size)
+		{
+			if (tab[i] > tab[j])
+			{
+				tmp = tab[i];
+				tab[i] = tab[j];
+				tab[j] = tmp;
+			}
+			j++;
+		}
+		i++;
 	}
 }

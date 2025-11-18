@@ -6,76 +6,65 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/29 09:27:10 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/29 10:36:27 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/18 10:42:59 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 
-size_t	count_d(long n)
+size_t	count_digit(long num)
 {
 	size_t	count;
 
 	count = 0;
-	if (n < 0)
+	if (num <= 0)
 	{
+		num *= -1;
 		count++;
-		n *= -1;
 	}
-	while (n > 10)
+	while (num > 0)
 	{
 		count++;
-		n /= 10;
+		num /= 10;
 	}
 	return (count);
 }
 
-char *ft_itoa(int nbr)
+char *ft_itoa(int num)
 {
-	size_t	degits;
-	char	*ret;
-	long	n;
+	char *res;
+	size_t	size;
+	long	ln;
 
-	n = (long)nbr;
-	if (n == 0)
-		return (ret = "0");
-	degits = count_d(n);
-	ret = malloc(sizeof(char)* (degits + 1));
-	if (ret == NULL)
+	ln = (long)num;	
+	size = count_digit(ln);
+	res = malloc(sizeof(char) * (size + 1));
+	if (res == NULL)
 		return (NULL);
-	ret[degits] = '\0';
-	if (n < 0)
+	res[size] = '\0';
+	size--;
+	if (ln == 0)
+		res[0] = '0';
+	if (ln < 0)
 	{
-		ret[0] = '-';
-		n *= -1;
+		res[0] = '-';
+		ln *= -1;
 	}
-	while (n > 0)
+	while (ln > 9)
 	{
-		ret[degits] = (n % 10) + '0';
-		n /= 10;
-		degits--;
+		res[size] = ln % 10 + '0';
+		ln /= 10;
+		size--;
 	}
-	return (ret);
+	res[size] = ln + '0';
+	return (res);
 }
 
 #include <stdio.h>
-#include <limits.h>
-int	main(void)
+#include <stdlib.h>
+int main(int ac, char **av)
 {
-	int nbr = -42;
-	char *ret = ft_itoa(nbr);
-	printf("ret: %s\n", ret);
-
-	nbr = INT_MAX;
-	ret = ft_itoa(nbr);
-	printf("ret: %s\n", ret);
-
-	nbr = INT_MIN;
-	ret = ft_itoa(nbr);
-	printf("ret: %s\n", ret);
-
-	nbr = 0;
-	ret = ft_itoa(nbr);
-	printf("ret: %s\n", ret);
+	(void)ac;
+	printf("%s\n", ft_itoa(atoi(av[1])));
+	return (0);
 }
-
