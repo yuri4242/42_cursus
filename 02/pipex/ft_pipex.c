@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:48:57 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/07 17:40:46 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/20 18:38:04 by yu-ri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,9 @@ int	do_pipex(char **av, char **envp)
 int	main(int ac, char **av, char **envp)
 {
 	if (ac != 5)
+	{
+		write(2, "Usage: ./pipex <file1> <cmd1> <cmd2> <file2>\n", 46);
 		return (EXIT_FAILURE);
+	}
 	return (do_pipex(av, envp));
 }
