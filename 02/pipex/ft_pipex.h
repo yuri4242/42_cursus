@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:49:25 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/07 17:18:37 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/21 14:43:03 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include <stdio.h>
 # include <string.h>
 # include "libft.h"
+
+# define CMD_NOT_FOUND 127
 
 typedef struct s_pipex
 {
@@ -37,11 +39,8 @@ int		do_pipex(char **av, char **envp);
 pid_t	fork_cmd(char **av, char **envp, t_pipex *vars, int cmd);
 
 //cmd1.c
-void	execve_cmd1(char *file, char *cmd, char **envp, t_pipex *vars);
+void	execve_cmd(int nbr, char *cmd, char **envp, t_pipex *vars);
 void	do_cmd1(t_pipex *vars, char *cmd_fullpath, char **cmds, char **envp);
-
-//cmd2.c
-void	execve_cmd2(char *file, char *cmd, char **envp, t_pipex *vars);
 void	do_cmd2(t_pipex *vars, char *cmd_fullpath, char **cmds, char **envp);
 
 //utils1.c
@@ -56,5 +55,6 @@ char	*extract_path_fm_envp_lst(char **envp);
 int		check_cmd_path(char *path, char *cmd, char **cmd_fullpath);
 char	*create_cmd_path(char *cmd, char **envp);
 void	print_error(char *err);
+void	close_all_fds(t_pipex *vars);
 
 #endif

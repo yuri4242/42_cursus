@@ -1,24 +1,15 @@
-==186066== Memcheck, a memory error detector
-==186066== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==186066== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==186066== Command: ./pipex infile cat cat unwritable_file
-==186066== Parent PID: 185738
-==186066== 
-==186068== 
-==186068== HEAP SUMMARY:
-==186068==     in use at exit: 0 bytes in 0 blocks
-==186068==   total heap usage: 31 allocs, 31 frees, 667 bytes allocated
-==186068== 
-==186068== All heap blocks were freed -- no leaks are possible
-==186068== 
-==186068== For lists of detected and suppressed errors, rerun with: -s
-==186068== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==186066== 
-==186066== HEAP SUMMARY:
-==186066==     in use at exit: 0 bytes in 0 blocks
-==186066==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
-==186066== 
-==186066== All heap blocks were freed -- no leaks are possible
-==186066== 
-==186066== For lists of detected and suppressed errors, rerun with: -s
-==186066== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==188719== Memcheck, a memory error detector
+==188719== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==188719== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==188719== Command: ./pipex infile cat cat unwritable_file
+==188719== Parent PID: 188421
+==188719== 
+==188719== 
+==188719== HEAP SUMMARY:
+==188719==     in use at exit: 0 bytes in 0 blocks
+==188719==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==188719== 
+==188719== All heap blocks were freed -- no leaks are possible
+==188719== 
+==188719== For lists of detected and suppressed errors, rerun with: -s
+==188719== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

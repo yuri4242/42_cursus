@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:41:44 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/07 17:33:56 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/21 14:30:49 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,12 @@ void	print_error(char *err)
 	write(STDERR_FILENO, "command not found: ", 19);
 	write(STDERR_FILENO, err, ft_strlen(err));
 	write(STDERR_FILENO, "\n", 1);
+}
+
+void	close_all_fds(t_pipex *vars)
+{
+	close(vars->in_fd);
+	close(vars->out_fd);
+	close(vars->pipe_fds[0]);
+	close(vars->pipe_fds[1]);
 }

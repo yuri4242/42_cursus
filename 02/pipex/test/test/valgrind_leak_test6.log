@@ -1,24 +1,24 @@
-==186013== Memcheck, a memory error detector
-==186013== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==186013== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==186013== Command: ./pipex infile cat no_cmd outfile
-==186013== Parent PID: 185738
-==186013== 
-==186015== 
-==186015== HEAP SUMMARY:
-==186015==     in use at exit: 0 bytes in 0 blocks
-==186015==   total heap usage: 45 allocs, 45 frees, 1,011 bytes allocated
-==186015== 
-==186015== All heap blocks were freed -- no leaks are possible
-==186015== 
-==186015== For lists of detected and suppressed errors, rerun with: -s
-==186015== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==186013== 
-==186013== HEAP SUMMARY:
-==186013==     in use at exit: 0 bytes in 0 blocks
-==186013==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
-==186013== 
-==186013== All heap blocks were freed -- no leaks are possible
-==186013== 
-==186013== For lists of detected and suppressed errors, rerun with: -s
-==186013== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==188682== Memcheck, a memory error detector
+==188682== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==188682== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==188682== Command: ./pipex infile cat no_cmd outfile
+==188682== Parent PID: 188421
+==188682== 
+==188684== 
+==188684== HEAP SUMMARY:
+==188684==     in use at exit: 0 bytes in 0 blocks
+==188684==   total heap usage: 45 allocs, 45 frees, 1,011 bytes allocated
+==188684== 
+==188684== All heap blocks were freed -- no leaks are possible
+==188684== 
+==188684== For lists of detected and suppressed errors, rerun with: -s
+==188684== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==188682== 
+==188682== HEAP SUMMARY:
+==188682==     in use at exit: 0 bytes in 0 blocks
+==188682==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==188682== 
+==188682== All heap blocks were freed -- no leaks are possible
+==188682== 
+==188682== For lists of detected and suppressed errors, rerun with: -s
+==188682== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
