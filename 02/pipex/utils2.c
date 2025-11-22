@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:41:44 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/21 14:30:49 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/22 16:26:45 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ char	*extract_path_fm_envp_lst(char **envp)
 	size_t	i;
 
 	path_phrase = NULL;
-	l_path = ft_strlen("PATH=");
+	l_path = ft_strlen(ENV_PATH_KEY);
 	i = 0;
 	while (envp[i] != NULL)
 	{
-		if (strncmp(envp[i], "PATH=", l_path) == 0)//PATHはマジックナンバーなので要更新
+		if (strncmp(envp[i], ENV_PATH_KEY, l_path) == 0)
 		{
 			path_phrase = envp[i] + l_path;
 			break ;

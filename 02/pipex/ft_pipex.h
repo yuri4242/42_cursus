@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:49:25 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/21 14:43:03 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:59:22 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,14 @@
 # include <sys/wait.h>
 # include <stdio.h>
 # include <string.h>
+# include <errno.h>
 # include "libft.h"
 
+# define ENV_PATH_KEY "PATH="
 # define CMD_NOT_FOUND 127
+# define NORMAL 0
+# define S_QUOTE 1
+# define D_QUOTE 2
 
 typedef struct s_pipex
 {
@@ -42,6 +47,12 @@ pid_t	fork_cmd(char **av, char **envp, t_pipex *vars, int cmd);
 void	execve_cmd(int nbr, char *cmd, char **envp, t_pipex *vars);
 void	do_cmd1(t_pipex *vars, char *cmd_fullpath, char **cmds, char **envp);
 void	do_cmd2(t_pipex *vars, char *cmd_fullpath, char **cmds, char **envp);
+
+//split_cmds1.c
+char	**split_cmds(const char *cmd_str);
+
+//split_cmds2.c
+void	state_parser(const char **s, int *state);
 
 //utils1.c
 void	init_struct(t_pipex *vars);

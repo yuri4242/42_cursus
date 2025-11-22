@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:39:10 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/07 15:52:06 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/22 18:00:22 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,13 @@ void	init_struct(t_pipex *vars)
 
 int	pipe_fd_cleanup(t_pipex vars)
 {
+	int	status;
+
 	close(vars.pipe_fds[0]);
 	close(vars.pipe_fds[1]);
 	waitpid(vars.pid1, NULL, 0);
-	waitpid(vars.pid2, NULL, 0);
-	return (EXIT_SUCCESS);
+	waitpid(vars.pid2, &status, 0);
+	return ((status >> 8) & 0xFF);
 }
 
 void	cmd_cleanup(char ***arr, char **str)

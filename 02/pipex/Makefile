@@ -12,6 +12,8 @@ HEADER	:= ft_pipex.h
 SRCS := \
 		ft_pipex.c \
 		cmd1.c     \
+		split_cmds1.c \
+		split_cmds2.c \
 		utils1.c   \
 		utils2.c
 

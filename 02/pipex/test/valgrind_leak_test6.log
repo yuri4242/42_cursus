@@ -1,0 +1,24 @@
+==270311== Memcheck, a memory error detector
+==270311== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==270311== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==270311== Command: ./pipex infile cat no_cmd outfile
+==270311== Parent PID: 270052
+==270311== 
+==270313== 
+==270313== HEAP SUMMARY:
+==270313==     in use at exit: 0 bytes in 0 blocks
+==270313==   total heap usage: 45 allocs, 45 frees, 1,011 bytes allocated
+==270313== 
+==270313== All heap blocks were freed -- no leaks are possible
+==270313== 
+==270313== For lists of detected and suppressed errors, rerun with: -s
+==270313== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==270311== 
+==270311== HEAP SUMMARY:
+==270311==     in use at exit: 0 bytes in 0 blocks
+==270311==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==270311== 
+==270311== All heap blocks were freed -- no leaks are possible
+==270311== 
+==270311== For lists of detected and suppressed errors, rerun with: -s
+==270311== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

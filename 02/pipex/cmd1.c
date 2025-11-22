@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:36:38 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/21 15:07:36 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/22 17:56:35 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,11 @@ void	do_cmd1(t_pipex *vars, char *cmd_fullpath, char **cmds, char **envp)
 	close_fds(vars->in_fd, vars->pipe_fds);
 	execve(cmd_fullpath, cmds, envp);
 	cmd_cleanup(&cmds, &cmd_fullpath);
+	if (errno == EACCES)
+	{
+		perror("execve");
+		exit(126);
+	}
 	perror("execve");
 	exit(EXIT_FAILURE);
 }
@@ -30,6 +35,11 @@ void	do_cmd2(t_pipex *vars, char *cmd_fullpath, char **cmds, char **envp)
 	close_fds(vars->out_fd, vars->pipe_fds);
 	execve(cmd_fullpath, cmds, envp);
 	cmd_cleanup(&cmds, &cmd_fullpath);
+	if (errno == EACCES)
+	{
+		perror("execve");
+		exit(126);
+	}
 	perror("execve");
 	exit(EXIT_FAILURE);
 }
@@ -39,7 +49,7 @@ void	execve_cmd(int nbr, char *cmd, char **envp, t_pipex *vars)
 	char	**cmds;
 	char	*cmd_fullpath;
 
-	cmds = ft_split_cmds(cmd);
+	cmds = split_cmds(cmd);
 	if (cmds == NULL || cmds[0] == NULL)
 	{
 		free_all(cmds);
