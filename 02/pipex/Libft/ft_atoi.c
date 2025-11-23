@@ -6,21 +6,11 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 12:57:43 by yikebata          #+#    #+#             */
-/*   Updated: 2025/10/19 12:57:47 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/22 16:04:55 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_isspace(char c)
-{
-	return (c == '\f'
-		|| c == '\n'
-		|| c == '\r'
-		|| c == '\t'
-		|| c == '\v'
-		|| c == ' ');
-}
 
 static int	ft_issign(char c)
 {

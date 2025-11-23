@@ -31,7 +31,8 @@ SRC_PART1 := \
 			 ./ft_isascii.c	\
 			 ./ft_isprint.c	\
 			 ./ft_toupper.c	\
-			 ./ft_tolower.c
+			 ./ft_tolower.c \
+			 ./ft_isspace.c
 
 SRC_PART2	:= \
 			   ./ft_substr.c		\

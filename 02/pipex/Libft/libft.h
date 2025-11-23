@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 13:07:27 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/07 11:47:29 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/22 15:02:27 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
+int		ft_isspace(int c);
 
 // -----part 2-----
 char	*ft_substr(char const *s, unsigned int start, size_t len);
