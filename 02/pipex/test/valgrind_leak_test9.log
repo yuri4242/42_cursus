@@ -1,24 +1,24 @@
-==270327== Memcheck, a memory error detector
-==270327== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
-==270327== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
-==270327== Command: ./pipex infile  cat outfile
-==270327== Parent PID: 270052
-==270327== 
-==270328== 
-==270328== HEAP SUMMARY:
-==270328==     in use at exit: 0 bytes in 0 blocks
-==270328==   total heap usage: 1 allocs, 1 frees, 8 bytes allocated
-==270328== 
-==270328== All heap blocks were freed -- no leaks are possible
-==270328== 
-==270328== For lists of detected and suppressed errors, rerun with: -s
-==270328== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
-==270327== 
-==270327== HEAP SUMMARY:
-==270327==     in use at exit: 0 bytes in 0 blocks
-==270327==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
-==270327== 
-==270327== All heap blocks were freed -- no leaks are possible
-==270327== 
-==270327== For lists of detected and suppressed errors, rerun with: -s
-==270327== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==468608== Memcheck, a memory error detector
+==468608== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==468608== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==468608== Command: ./pipex infile  cat outfile
+==468608== Parent PID: 468337
+==468608== 
+==468609== 
+==468609== HEAP SUMMARY:
+==468609==     in use at exit: 0 bytes in 0 blocks
+==468609==   total heap usage: 1 allocs, 1 frees, 8 bytes allocated
+==468609== 
+==468609== All heap blocks were freed -- no leaks are possible
+==468609== 
+==468609== For lists of detected and suppressed errors, rerun with: -s
+==468609== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==468608== 
+==468608== HEAP SUMMARY:
+==468608==     in use at exit: 0 bytes in 0 blocks
+==468608==   total heap usage: 0 allocs, 0 frees, 0 bytes allocated
+==468608== 
+==468608== All heap blocks were freed -- no leaks are possible
+==468608== 
+==468608== For lists of detected and suppressed errors, rerun with: -s
+==468608== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

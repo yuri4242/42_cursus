@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:35:03 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/22 17:43:39 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/23 15:15:21 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,11 @@ static int	count_args(const char *s)
 		while (*s && (state != NORMAL || !ft_isspace(*s)))
 		{
 			if (*s == '\'' || *s == '"')
-				state_parser(&s, &state);
+				state_parser(*s, &state);
 			else if (*s == '\\' && *(s + 1) && state != S_QUOTE)
 				s++;
+			else if (state == NORMAL && ft_isspace(*s))
+				break ;
 			s++;
 		}
 	}
@@ -53,7 +55,7 @@ static char	*copy_and_strip(const char *src, size_t len)
 	while (src[i] && j < len)
 	{
 		if (src[i] == '\'' || src[i] == '"')
-			state_parser(&src, &state);
+			state_parser(src[i], &state);
 		else if (src[i] == '\\' && src[i + 1] && state != S_QUOTE)
 			dest[j++] = src[++i];
 		else
@@ -74,7 +76,7 @@ static size_t	get_token_len(const char *s)
 	while (s[i])
 	{
 		if (s[i] == '\'' || s[i] == '"')
-			state_parser(&s, &state);
+			state_parser(s[i], &state);
 		else if (s[i] == '\\' && s[i + 1] && state != S_QUOTE)
 			i++;
 		else if (state == NORMAL && ft_isspace(s[i]))

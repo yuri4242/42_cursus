@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/05 17:49:25 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/22 17:59:22 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/23 18:09:18 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	do_cmd2(t_pipex *vars, char *cmd_fullpath, char **cmds, char **envp);
 char	**split_cmds(const char *cmd_str);
 
 //split_cmds2.c
-void	state_parser(const char **s, int *state);
+void	state_parser(char c, int *state);
 
 //utils1.c
 void	init_struct(t_pipex *vars);
@@ -62,8 +62,6 @@ void	close_fds(int file_fd, int *fds);
 void	free_all(char **arr);
 
 //utils2.c
-char	*extract_path_fm_envp_lst(char **envp);
-int		check_cmd_path(char *path, char *cmd, char **cmd_fullpath);
 char	*create_cmd_path(char *cmd, char **envp);
 void	print_error(char *err);
 void	close_all_fds(t_pipex *vars);

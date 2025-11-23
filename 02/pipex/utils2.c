@@ -6,13 +6,13 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 17:41:44 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/22 16:26:45 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/23 18:02:44 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_pipex.h"
 
-char	*extract_path_fm_envp_lst(char **envp)
+static char	*extract_path_fm_envp_lst(char **envp)
 {
 	char	*path_phrase;
 	size_t	l_path;
@@ -23,7 +23,7 @@ char	*extract_path_fm_envp_lst(char **envp)
 	i = 0;
 	while (envp[i] != NULL)
 	{
-		if (strncmp(envp[i], ENV_PATH_KEY, l_path) == 0)
+		if (ft_strncmp(envp[i], ENV_PATH_KEY, l_path) == 0)
 		{
 			path_phrase = envp[i] + l_path;
 			break ;
@@ -33,7 +33,7 @@ char	*extract_path_fm_envp_lst(char **envp)
 	return (path_phrase);
 }
 
-int	check_cmd_path(char *path, char *cmd, char **cmd_fullpath)
+static int	check_cmd_path(char *path, char *cmd, char **cmd_fullpath)
 {
 	char	*path_slash;
 
@@ -59,6 +59,12 @@ char	*create_cmd_path(char *cmd, char **envp)
 	char	*cmd_fullpath;
 	size_t	i;
 
+	if (ft_strchr(cmd, '/') != NULL)
+	{
+		if (access(cmd, X_OK) == 0)
+			return (ft_strdup(cmd));
+		return (NULL);
+	}
 	paths = ft_split(extract_path_fm_envp_lst(envp), ':');
 	if (paths == NULL)
 		return (NULL);
