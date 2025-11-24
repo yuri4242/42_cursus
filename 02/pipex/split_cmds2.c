@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/22 14:35:03 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/23 14:46:15 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/23 23:25:24 by yu-ri            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	state_parser(char c, int *state)
 		else
 			*state = S_QUOTE;
 	}
-	else if (c == '"' && *state != S_QUOTE)
+	if (c == '"' && *state != S_QUOTE)
 	{
 		if (*state == D_QUOTE)
 			*state = NORMAL;
