@@ -1,8 +1,8 @@
 CC	:= cc
-CFLAGS	:= -Wall -Wextra -Werror -I./ft_printf/header -I./
+CFLAGS	:= -Wall -Wextra -Werror -I./ft_printf/header -I./GNL -I./
 
 AR	:= ar
-ARFLAGS	:= rs
+ARFLAGS	:= rsc
 
 INCLUDES	:= ./libft.h
 
@@ -31,7 +31,8 @@ SRC_PART1 := \
 			 ./ft_isascii.c	\
 			 ./ft_isprint.c	\
 			 ./ft_toupper.c	\
-			 ./ft_tolower.c
+			 ./ft_tolower.c \
+			 ./ft_isspace.c
 
 SRC_PART2	:= \
 			   ./ft_substr.c		\
@@ -86,8 +87,11 @@ SRC_PRINTF	:= \
 				./ft_printf/utils/ptf_putstr.c           \
 				./ft_printf/utils/write_check.c
 
+SRC_GNL	:= \
+			./GNL/get_next_line.c \
+			./GNL/get_next_line_utils.c
 
-SRCS	:= $(SRC_PART1) $(SRC_PART2) $(SRC_BONUS) $(SRC_PRINTF)
+SRCS	:= $(SRC_PART1) $(SRC_PART2) $(SRC_BONUS) $(SRC_PRINTF) $(SRC_GNL)
 OBJ	:= $(SRCS:.c=.o)
 
 #OBJ_BONUS	:= $(SRC_BONUS:.c=.o)
@@ -99,16 +103,24 @@ all: $(NAME)
 #	$(AR) $(ARFLAGS) $(NAME) $^
 
 $(NAME): $(OBJ)
-	$(AR) $(ARFLAGS) $@ $^
+	@printf "\r\033[K\033[32mCompiling Done!!\033[0m"
+	@echo "\n\033[32mCreating archive $(NAME)...\033[0m"
+	@$(AR) $(ARFLAGS) $@ $^
+	@echo "\033[32mCreating archive Done!!\033[0m"
 
 %.o: %.c $(INCLUDES)
-	$(CC) $(CFLAGS) -c $< -o $@
+	@printf "\r\033[K\033[32mCompiling $<\033[0m"
+	@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJ) $(OBJ_BONUS)
+	@echo "\033[33mCleaning object files...\033[0m"
+	@rm -f $(OBJ)
+	@echo "\033[33mCleaning Done!!\033[0m"
 
 fclean: clean
-	rm -f $(NAME)
+	@echo "\033[31mRemoving binary...\033[0m"
+	@rm -f $(NAME)
+	@echo "\033[31mRemoving Done!!\033[0m"
 
 re: fclean all
 
