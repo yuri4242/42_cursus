@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   key_press.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 17:15:48 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/27 16:54:47 by yikebata         ###   ########.fr       */
+/*   Created: 2025/11/27 12:07:30 by yikebata          #+#    #+#             */
+/*   Updated: 2025/11/27 12:32:21 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+int	key_press(int keycode, t_game *game)
 {
-	if (ac != 2)
-	{
-		write(2, "Usage: ./so_long <map_filepath>\n", 33);
-		return (EXIT_FAILURE);
-	}
-	if (check_input(av[1]) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (start_game(av[1]) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	if (keycode == KEY_ESC)
+		close_game(game);
+	if (keycode == KEY_W)
+		move_player(game, 0, -1);
+	else if (keycode == KEY_A)
+		move_player(game, -1, 0);
+	else if (keycode == KEY_S)
+		move_player(game, 0, 1);
+	else if (keycode == KEY_D)
+		move_player(game, 1, 0);
+	return (0);
 }

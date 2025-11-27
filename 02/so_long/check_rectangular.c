@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_rectangular.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/26 17:15:48 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/27 16:54:47 by yikebata         ###   ########.fr       */
+/*   Created: 2025/11/27 16:45:01 by yikebata          #+#    #+#             */
+/*   Updated: 2025/11/27 16:45:39 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main(int ac, char **av)
+int	check_rectangular(t_game *game)
 {
-	if (ac != 2)
+	int		i;
+	size_t	width;
+
+	if (!game->map || !game->map[0])
+		return (EXIT_FAILURE);
+	width = ft_strlen(game->map[0]);
+	game->map_w = (int)width;
+	i = 1;
+	while (game->map[i])
 	{
-		write(2, "Usage: ./so_long <map_filepath>\n", 33);
-		return (EXIT_FAILURE);
+		if (ft_strlen(game->map[i]) != width)
+		{
+			ft_putstr_fd("Error: Map is not rectangular.\n", 2);
+			return (EXIT_FAILURE);
+		}
+		i++;
 	}
-	if (check_input(av[1]) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	if (start_game(av[1]) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
+	game->map_h = i;
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 17:23:06 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/26 19:06:21 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/27 19:17:48 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ static int	init_textures(void *mlx, t_texture *img)
 	img->collectible = mlx_xpm_file_to_image(mlx, COLLECTIBLE, &w, &h);
 	img->player = mlx_xpm_file_to_image(mlx, PLAYER, &w, &h);
 	img->exit = mlx_xpm_file_to_image(mlx, EXIT, &w, &h);
+	img->obstacle = mlx_xpm_file_to_image(mlx, OBSTACLE, &w, &h);
 	if (!img->wall_lu || !img->wall_ru || !img->wall_ll || !img->wall_rl
 		|| !img->wall_v || !img->wall_h
 		|| !img->floor || !img->collectible
-		|| !img->player || !img->exit)
+		|| !img->player || !img->exit
+		|| !img->obstacle)
 	{
 		ft_putstr_fd("Error: Falied to load xpm file.\n", 2);
 		return (EXIT_FAILURE);
@@ -38,7 +40,7 @@ static int	init_textures(void *mlx, t_texture *img)
 	return (EXIT_SUCCESS);
 }
 
-static int	draw_map(t_game *game)
+int	draw_map(t_game *game)
 {
 	int		x;
 	int		y;
