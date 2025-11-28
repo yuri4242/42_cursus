@@ -6,13 +6,11 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 10:15:37 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/26 12:39:24 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:33:01 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <unistd.h>
-#include "Libft/libft.h"
+#include "so_long.h"
 
 static char	**lst_to_arr(t_list *head)
 {

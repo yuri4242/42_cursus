@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/27 12:12:48 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/27 17:03:10 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/28 12:06:42 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static void	destroy_images(t_game *game)
 		mlx_destroy_image(game->mlx, game->img.player);
 	if (game->img.exit)
 		mlx_destroy_image(game->mlx, game->img.exit);
+	if (game->img.obstacle)
+		mlx_destroy_image(game->mlx, game->img.obstacle);
 }
 
 static void	destroy_window(t_game *game)

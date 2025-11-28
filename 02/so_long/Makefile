@@ -1,7 +1,8 @@
-LIBFT_DIR	:= ./Libft
+HEADER_DIR	:= ./include
+LIBFT_DIR	:= ./src/Libft
 MLX_DIR	:= $(HOME)/minilibx
 
-INCLUDES	:= -I$(LIBFT_DIR) -I$(MLX_DIR)
+INCLUDES	:= -I$(LIBFT_DIR) -I$(MLX_DIR) -I$(HEADER_DIR)
 
 LIBFT_FLAGS	:= -L$(LIBFT_DIR) -lft
 MLX_FLAGS	:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
@@ -11,24 +12,25 @@ CFLAGS	:= -Wall -Wextra -Werror
 
 NAME	:= so_long
 
-HEADER	:= so_long.h
+HEADER	:= $(HEADER_DIR)/so_long.h
 
 SRCS := \
-		main.c              \
-		check_chars.c       \
-		check_input.c       \
-		check_path.c        \
-		check_rectangular.c \
-		check_wall.c        \
-		close_game.c        \
-		draw_map.c          \
-		key_press.c         \
-		launch_window.c     \
-		move_player.c       \
-		read_map.c          \
-		set_img.c           \
-		start_game.c        \
-		validate_map.c
+		./src/main.c                       \
+		./src/checkers/check_chars.c       \
+		./src/checkers/check_input.c       \
+		./src/checkers/check_map_size.c    \
+		./src/checkers/check_path.c        \
+		./src/checkers/check_rectangular.c \
+		./src/checkers/check_wall.c        \
+		./src/game/close_game.c            \
+		./src/game/start_game.c            \
+		./src/map/draw_map.c               \
+		./src/map/read_map.c               \
+		./src/map/validate_map.c           \
+		./src/process/key_press.c          \
+		./src/process/launch_window.c      \
+		./src/process/move_player.c        \
+		./src/process/set_img.c
 
 OBJS	:= $(SRCS:.c=.o)
 

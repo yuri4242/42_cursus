@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/26 16:26:21 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/27 19:14:08 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/28 11:36:00 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,10 @@ typedef struct s_game
 # define KEY_S 115
 # define KEY_D 100
 # define MAP_EXTENSION ".ber"
+# define MAX_WIDTH 120
+# define MAX_HEIGHT 60
+# define MIN_WIDTH 4
+# define MIN_HEIGHT 4
 
 //start_game.c
 int		start_game(char *filepath);
@@ -114,5 +118,8 @@ int		check_rectangular(t_game *game);
 
 //check_wall.c
 int		check_wall(t_game *game);
+
+//check_map_size.c
+int		check_map_size(t_game *game);
 
 #endif
