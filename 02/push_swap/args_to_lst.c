@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:19:10 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/29 18:49:29 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:43:05 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	args_to_lst(char **args, t_stack *stack_a)
 	int		i;
 	char	**splitted_args;
 
-	i = 0;
+	i = 1;
 	while (args[i])
 	{
 		splitted_args = ps_split(args[i]);
@@ -50,6 +50,11 @@ int	args_to_lst(char **args, t_stack *stack_a)
 			return (EXIT_FAILURE);
 		free_arr(&splitted_args);
 		i++;
+	}
+	if (stack_a->size > 0)
+	{
+		stack_a->bottom->next = stack_a->top;
+		stack_a->top->prev = stack_a->bottom;
 	}
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@ INCLUDES	:= -I$(LIBFT_DIR) -I$(HEADER_DIR)
 LIBFT_FLAGS	:= -L$(LIBFT_DIR) -lft
 
 CC	:= cc
-CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	:= -Wall -Wextra -Werror -fsanitize=address -g
 
 NAME	:= push_swap
 
@@ -18,7 +18,12 @@ SRCS := \
 		./create_and_free_stacks.c    \
 		./ps_list_operation.c        \
 		./ps_split.c \
-		./utils.c 
+		./utils.c \
+		./swap.c \
+		./push.c \
+		./rotate.c \
+		./reverse_rotate.c \
+		./two_sort.c
 
 OBJS	:= $(SRCS:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:08:26 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/29 18:52:33 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:36:53 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,14 @@ void	ps_lstadd_back(t_node **lst, t_node *new)
 	if (*lst == NULL)
 	{
 		*lst = new;
+		new->prev = NULL;
+		new->next = NULL;
 		return ;
 	}
 	back = ps_lstlast(*lst);
 	back->next = new;
+	new->prev = back;
+	new->next = NULL;
 }
 
 t_node	*ps_lstnew(int val)

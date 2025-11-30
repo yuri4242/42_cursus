@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:04:49 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/29 18:52:08 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:13:43 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,27 @@ t_node	*ps_lstnew(int val);
 //utils.c
 void	free_arr(char ***arr);
 int		err_print(char ***arr);
+
+//swap.c
+void	sa(t_stack *stack_a, int print);
+void	sb(t_stack *stack_b, int print);
+void	ss(t_stack *stack_a, t_stack *stack_b, int print);
+
+//push.c
+void	pa(t_stack *stack_a, t_stack *stack_b, int print);
+void	pa(t_stack *stack_a, t_stack *stack_b, int print);
+
+//rotate.c
+void	ra(t_stack *stack_a, int print);
+void	rb(t_stack *stack_b, int print);
+void	rr(t_stack *stack_a, t_stack *stack_b, int print);
+
+//reverse_rotate.c
+void	rra(t_stack *stack_a, int print);
+void	rrb(t_stack *stack_a, int print);
+void	rrr(t_stack *stack_a, t_stack *stack_b, int print);
+
+//two_sort.c
+void	two_sort(t_stack *stack_a);
 
 #endif

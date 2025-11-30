@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:14:27 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/29 18:58:09 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:24:04 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ int	check_int(char *arg)
 	char	c;
 
 	i = 0;
+	if (arg[i] == '-' || arg[i] == '+')
+		i++;
+	if (!arg[i])
+		return (EXIT_FAILURE);
 	while (arg[i])
 	{
 		c = arg[i];
@@ -54,6 +58,12 @@ int	check_dup(int num, t_stack *stack)
 
 void	add_to_stack(int num, t_stack *stack)
 {
-	ps_lstadd_back(&stack->top, ps_lstnew(num));
+	t_node	*new;
+
+	new = ps_lstnew(num);
+	if (!new)
+		return ;
+	ps_lstadd_back(&stack->top, new);
+	stack->bottom = new;
 	stack->size++;
 }

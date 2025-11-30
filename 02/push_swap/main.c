@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:18:18 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/29 18:41:00 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:26:41 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,15 @@ void	push_swap(char **args)
 		free_stacks(&stack_a, &stack_b);
 		return ;
 	}
-	print_stack(stack_a);
+//	print_stack(stack_a);
+	if (stack_a->size == 2)
+		two_sort(stack_a);
+	free_stacks(&stack_a, &stack_b);
 }
 
 int	main(int ac, char **av)
 {
-	if (ac >= 2)
+	if (ac < 2)
 		return (0);
 	push_swap(av);
 	return (0);

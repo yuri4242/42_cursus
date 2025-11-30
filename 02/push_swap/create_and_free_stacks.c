@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 18:29:54 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/29 18:32:04 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/11/30 18:29:49 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	free_stack_content(t_stack *stack)
 	cur = stack->top;
 	while (i < stack->size)
 	{
+		if (!cur)
+			break ;
 		tmp = cur->next;
 		free(cur);
 		cur = tmp;
