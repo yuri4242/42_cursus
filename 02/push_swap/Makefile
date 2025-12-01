@@ -1,4 +1,4 @@
-HEADER_DIR	:= ./
+HEADER_DIR	:= ./include
 LIBFT_DIR	:= ./src/Libft
 
 INCLUDES	:= -I$(LIBFT_DIR) -I$(HEADER_DIR)
@@ -12,18 +12,25 @@ NAME	:= push_swap
 
 
 SRCS := \
-		./main.c                       \
-		./args_to_lst.c       \
-		./check_args.c       \
-		./create_and_free_stacks.c    \
-		./ps_list_operation.c        \
-		./ps_split.c \
-		./utils.c \
-		./swap.c \
-		./push.c \
-		./rotate.c \
-		./reverse_rotate.c \
-		./two_sort.c
+		./src/main.c                         \
+		./src/args/args_to_lst.c             \
+		./src/args/check_args.c              \
+		./src/args/ps_list_operation.c       \
+		./src/args/ps_split.c                \
+		./src/operation/swap.c               \
+		./src/operation/push.c               \
+		./src/operation/rotate.c             \
+		./src/operation/reverse_rotate.c     \
+		./src/small_sort/two_sort.c          \
+		./src/small_sort/three_sort.c        \
+		./src/small_sort/four_five_sort.c    \
+		./src/large_sort/large_sort.c        \
+		./src/large_sort/move_to_a.c         \
+		./src/large_sort/update_node_info.c  \
+		./src/large_sort/both_rotate.c       \
+		./src/utils/create_and_free_stacks.c \
+		./src/utils/utils.c                  \
+		./src/utils/coordinate_compression.c 
 
 OBJS	:= $(SRCS:.c=.o)
 
