@@ -6,26 +6,11 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:18:18 by yikebata          #+#    #+#             */
-/*   Updated: 2025/12/01 16:28:29 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/12/01 17:56:52 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	print_stack(t_stack *stack)
-{
-	t_node	*cur;
-	int		i;
-
-	i = 0;
-	cur = stack->top;
-	while (i < stack->size)
-	{
-		ft_printf("%d\n", cur->val);
-		cur = cur->next;
-		i++;
-	}
-}
 
 static void	sort_start(t_stack *stack_a, t_stack *stack_b)
 {
@@ -37,6 +22,22 @@ static void	sort_start(t_stack *stack_a, t_stack *stack_b)
 		four_five_sort(stack_a, stack_b);
 	else
 		large_sort(stack_a, stack_b);
+}
+
+static int	is_sorted(t_stack *stack)
+{
+	t_node	*cur;
+
+	if (!stack || !stack->top || stack->size < 2)
+		return (1);
+	cur = stack->top;
+	while (cur->next != stack->top)
+	{
+		if (cur->idx > cur->next->idx)
+			return (0);
+		cur = cur->next;
+	}
+	return (1);
 }
 
 static void	push_swap(char **args)
@@ -51,8 +52,12 @@ static void	push_swap(char **args)
 		free_stacks(&stack_a, &stack_b);
 		return ;
 	}
-//	print_stack(stack_a);
 	if (coordinate_compression(stack_a) == EXIT_FAILURE)
+	{
+		free_stacks(&stack_a, &stack_b);
+		return ;
+	}
+	if (is_sorted(stack_a))
 	{
 		free_stacks(&stack_a, &stack_b);
 		return ;

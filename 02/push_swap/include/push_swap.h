@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:04:49 by yikebata          #+#    #+#             */
-/*   Updated: 2025/12/01 16:41:22 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/12/01 18:54:33 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ typedef struct s_stack
 	int		size;
 }	t_stack;
 
-# define SMALL_CHUNK_SIZE 18
-# define LARGE_CHUNK_SIZE 45
+# define SMALL_CHUNK_SIZE 20
+# define LARGE_CHUNK_SIZE 65
 
 //create_and_free_stacks.c
 int		create_stacks(t_stack **stack_a, t_stack **stack_b);
@@ -65,6 +65,7 @@ t_node	*ps_lstnew(int val);
 //utils.c
 void	free_arr(char ***arr);
 int		err_print(char ***arr);
+int		contains_only_spaces(char *str);
 
 //swap.c
 void	sa(t_stack *stack_a, int print);
@@ -102,7 +103,7 @@ void	large_sort(t_stack *stack_a, t_stack *stack_b);
 
 //move_to_a.c
 t_node	*get_cheapest(t_stack *stack);
-void	additional_rotate(t_stack *stack, t_node *expected_top, char stack_type);
+void	additional_rotate(t_stack *stack, t_node *expected_top, char type);
 t_node	*find_min(t_stack *stack);
 
 //update_node_info.c
@@ -111,7 +112,7 @@ void	set_target(t_stack *stack_a, t_stack *stack_b);
 void	cal_move_cost(t_stack *stack_a, t_stack *stack_b);
 
 //both_rotate.c
-void	rotate_both(t_stack *stack_a, t_stack *stack_b, t_node *cheapest);
-void	reverse_rotate_both(t_stack *stack_a, t_stack *stack_b, t_node *cheapest);
+void	rotate_both(t_stack *a, t_stack *b, t_node *cheapest);
+void	reverse_rotate_both(t_stack *a, t_stack *b, t_node *cheapest);
 
 #endif

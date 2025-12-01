@@ -6,7 +6,7 @@ INCLUDES	:= -I$(LIBFT_DIR) -I$(HEADER_DIR)
 LIBFT_FLAGS	:= -L$(LIBFT_DIR) -lft
 
 CC	:= cc
-CFLAGS	:= -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS	:= -Wall -Wextra -Werror
 
 NAME	:= push_swap
 

@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/01 16:19:08 by yikebata          #+#    #+#             */
-/*   Updated: 2025/12/01 16:38:55 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/12/01 17:06:25 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,18 +40,18 @@ t_node	*get_cheapest(t_stack *stack)
 	return (tmp_cheapest);
 }
 
-void	additional_rotate(t_stack *stack, t_node *expected_top, char stack_type)
+void	additional_rotate(t_stack *stack, t_node *expected_top, char type)
 {
 	while (stack->top != expected_top)
 	{
-		if (stack_type == 'a')
+		if (type == 'a')
 		{
 			if (expected_top->above_median_flag)
 				ra(stack, 1);
 			else
 				rra(stack, 1);
 		}
-		else if (stack_type == 'b')
+		else if (type == 'b')
 		{
 			if (expected_top->above_median_flag)
 				rb(stack, 1);

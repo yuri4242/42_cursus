@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:19:10 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/30 18:43:05 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/12/01 19:07:15 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,11 @@ int	args_to_lst(char **args, t_stack *stack_a)
 	i = 1;
 	while (args[i])
 	{
+		if (contains_only_spaces(args[i]))
+		{
+			ft_putstr_fd("Error\n", 2);
+			return (EXIT_FAILURE);
+		}
 		splitted_args = ps_split(args[i]);
 		if (!splitted_args)
 			return (EXIT_FAILURE);

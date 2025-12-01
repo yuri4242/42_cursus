@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 16:57:36 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/29 17:02:23 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/12/01 17:19:11 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static int	check_overflow(long long res, int digit, int sign)
 	}
 	else
 	{
-		if ((long)res > -(long long)LONG_MIN / 10
-			|| ((long)res == -(long long)LONG_MIN / 10
-				&& digit > -(long long)LONG_MIN % 10))
+		if ((long)res < LONG_MIN / 10
+			|| ((long)res == LONG_MIN / 10
+				&& digit > 8))
 			return (-1);
 	}
 	return (0);

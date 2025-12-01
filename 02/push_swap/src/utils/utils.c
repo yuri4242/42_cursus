@@ -6,7 +6,7 @@
 /*   By: yikebata <yikebata@student.42tokyo.jp      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/29 17:10:16 by yikebata          #+#    #+#             */
-/*   Updated: 2025/11/29 18:10:18 by yikebata         ###   ########.fr       */
+/*   Updated: 2025/12/01 18:53:52 by yikebata         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,18 @@ int	err_print(char ***arr)
 	free_arr(arr);
 	ft_putstr_fd("Error\n", 2);
 	return (EXIT_FAILURE);
+}
+
+int	contains_only_spaces(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isspace(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }
