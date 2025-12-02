@@ -8,7 +8,7 @@ LIBFT_FLAGS	:= -L$(LIBFT_DIR) -lft
 MLX_FLAGS	:= -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
 
 CC	:= cc
-CFLAGS	:= -Wall -Wextra -Werror
+CFLAGS	:= -Wall -Wextra -Werror -fsanitize=address -g
 
 NAME	:= so_long
 

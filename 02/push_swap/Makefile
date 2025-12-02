@@ -10,7 +10,6 @@ CFLAGS	:= -Wall -Wextra -Werror
 
 NAME	:= push_swap
 
-
 SRCS := \
 		./src/main.c                         \
 		./src/args/args_to_lst.c             \
